@@ -273,8 +273,9 @@ asv_tax <- t(sapply(tax, function(x) {
 colnames(asv_tax) <- ranks
 asv_tax <- as.data.frame(asv_tax)
 asv_tax <- asv_tax[, -1]
-asv_tax$ASV <- gsub(pattern = ">", replacement = "", x = asv_headers)
-asv_tax$DNA_SEQ <- colnames(seqtab_nochim)
+ASV <- gsub(pattern=">", replacement="", x=asv_headers)
+DNA_SEQ <- colnames(seqtab_nochim)
+asv_tax <- cbind(DNA_SEQ,ASV,asv_tax)
 
 dim(asv_tax)
 dim(seqtab_nochim)

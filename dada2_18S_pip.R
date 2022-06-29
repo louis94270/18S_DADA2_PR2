@@ -297,7 +297,7 @@ vector_for_decontam <- c()
 
 #Replace neg by the character identifier for your blank samples
 for (i in 1:dim(asv_tab[, 3:dim(asv_tab)[2]])[2]) {
-  vector_for_decontam[i] <- str_detect(colnames(asv_tab)[i],
+  vector_for_decontam[i] <- str_detect(colnames(asv_tab[, 3:dim(asv_tab)[2]])[i],
                                        "blank_identifier",
                                        negate = FALSE)
 }

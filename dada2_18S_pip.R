@@ -309,7 +309,11 @@ table(contam_df$contaminant)
 
 # getting vector holding the identified contaminant IDs
 contam_asvs <- row.names(contam_df[contam_df$contaminant == TRUE, ])
-asv_tax[contam_asvs, ]
+tax_contam <- asv_tax[as.numeric(contam_asvs), ]
+write.csv(tax_contam,
+          file.path(path_results,
+                    "contam_seq_tax.csv"),
+          row.names = FALSE)
 
 # making new fasta file
 contam_indices <- which(asv_fasta %in% paste0(">ASV_", contam_asvs))
